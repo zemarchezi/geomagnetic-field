@@ -552,9 +552,12 @@ def plot_geomagnetic_map(xspace, yspace, year, height, initial_step=4, figsize=(
     
     # Add gridlines with larger font size for labels
     gl = ax.gridlines(draw_labels=True, linewidth=0.5, color='gray', alpha=0.5, linestyle='--')
+    # Turn off longitude labels but keep latitude labels
     gl.top_labels = False
+    gl.bottom_labels = False  # Turn off longitude labels at the bottom
     gl.right_labels = False
-    gl.xlabel_style = {'size': fontsize}
+    gl.left_labels = True     # Keep latitude labels on the left
+    # gl.xlabel_style = {'size': fontsize}
     gl.ylabel_style = {'size': fontsize}
     
     # Plot the magnetic equator
@@ -602,7 +605,7 @@ def plot_geomagnetic_map(xspace, yspace, year, height, initial_step=4, figsize=(
     
     # Set tick parameters for larger font size
     ax.tick_params(labelsize=fontsize)
-    
+
     plt.tight_layout()
     
     # Save the figure
